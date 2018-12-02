@@ -5,6 +5,35 @@ import (
 	"sort"
 )
 
+func aoc2a() string {
+	lines := readLines("input2.txt")
+
+	var twos, threes int
+
+	for _, line := range lines {
+		set := map[byte]int{}
+		for i := range line {
+			set[line[i]]++
+		}
+		var n2, n3 int
+		for c := range set {
+			if set[c] == 2 {
+				n2++
+			}
+			if set[c] == 3 {
+				n3++
+			}
+		}
+		if n2 > 0 {
+			twos++
+		}
+		if n3 > 0 {
+			threes++
+		}
+	}
+	return fmt.Sprint(twos * threes)
+}
+
 func aoc2b() string {
 	lines := readLines("input2.txt")
 
@@ -37,41 +66,7 @@ func aoc2b() string {
 
 	bestPair := pairs[0]
 	diff := findDiffering(bestPair)[0]
-	comm := append(bestPair.a[:diff], bestPair.a[diff+1:]...)
+	common := append(bestPair.a[:diff], bestPair.a[diff+1:]...)
 
-	return string(comm)
-}
-
-func aoc2a() string {
-	lines := readLines("input2.txt")
-
-	var isOK = func(set map[byte]int) (bool, bool) {
-		var twos, threes int
-		for c := range set {
-			if set[c] == 2 {
-				twos++
-			}
-			if set[c] == 3 {
-				threes++
-			}
-		}
-		return twos > 0, threes > 0
-	}
-
-	var twos, threes int
-	for _, line := range lines {
-		set := map[byte]int{}
-		for i := range line {
-			b := line[i]
-			set[b]++
-		}
-		ok2, ok3 := isOK(set)
-		if ok2 {
-			twos++
-		}
-		if ok3 {
-			threes++
-		}
-	}
-	return fmt.Sprint(twos * threes)
+	return string(common)
 }
