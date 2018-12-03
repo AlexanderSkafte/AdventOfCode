@@ -11,6 +11,7 @@ func main() {
 	aocs := []aocFn{
 		aoc1a, aoc1b,
 		aoc2a, aoc2b,
+		aoc3a, aoc3b,
 	}
 
 	fmt.Println("\n" +
@@ -23,16 +24,16 @@ func main() {
 		lines := readLines(fmt.Sprintf("input%d.txt", i/2+1))
 
 		a, t := measure(aocs[i], lines)
-		fmt.Printf(" a) %8s | %s\n", t, a.(string))
+		fmt.Printf(" a) %8s | %s\n", t, a)
 
 		b, t := measure(aocs[i+1], lines)
-		fmt.Printf(" b) %8s | %s\n", t, b.(string))
+		fmt.Printf(" b) %8s | %s\n", t, b)
 
 		fmt.Println()
 	}
 }
 
-func measure(fn aocFn, lines []string) (interface{}, time.Duration) {
+func measure(fn aocFn, lines []string) (string, time.Duration) {
 	start := time.Now()
 	result := fn(lines)
 	elapsed := time.Since(start)
