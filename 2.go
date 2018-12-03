@@ -5,9 +5,7 @@ import (
 	"sort"
 )
 
-func aoc2a() string {
-	lines := readLines("input2.txt")
-
+func aoc2a(lines []string) string {
 	var twos, threes int
 
 	for _, line := range lines {
@@ -34,9 +32,7 @@ func aoc2a() string {
 	return fmt.Sprint(twos * threes)
 }
 
-func aoc2b() string {
-	lines := readLines("input2.txt")
-
+func aoc2b(lines []string) string {
 	type Pair struct{ a, b []byte }
 
 	var findDiffering = func(pair Pair) []int {
