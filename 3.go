@@ -50,15 +50,15 @@ func aoc3b(lines []string) string {
 	}
 
 	for _, c := range claims {
-		me := true
+		this := true
 		for i := c.X; i < c.X+c.W; i++ {
 			for j := c.Y; j < c.Y+c.H; j++ {
 				if nbrClaims[XY{i, j}] != 1 {
-					me = false
+					this = false
 				}
 			}
 		}
-		if me == true {
+		if this {
 			return fmt.Sprint(c.ID)
 		}
 	}

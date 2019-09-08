@@ -12,6 +12,10 @@ func main() {
 		aoc1a, aoc1b,
 		aoc2a, aoc2b,
 		aoc3a, aoc3b,
+		aoc4a, aoc4b,
+		aoc5a, aoc5b,
+		aoc6a, aoc6b,
+		aoc7a, aoc7b,
 	}
 
 	fmt.Println("\n" +
